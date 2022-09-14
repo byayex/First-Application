@@ -1,0 +1,127 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: db-eu-03.sparkedhost.us:3306
+-- Erstellungszeit: 13. Sep 2022 um 22:35
+-- Server-Version: 10.6.7-MariaDB-1:10.6.7+maria~focal
+-- PHP-Version: 7.4.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Datenbank: `s70127_test_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `licensekeys`
+--
+
+CREATE TABLE `licensekeys` (
+  `licensekey` varchar(16) NOT NULL,
+  `product_id` varchar(40) NOT NULL,
+  `timestamp` varchar(40) NOT NULL,
+  `username` varchar(40) NOT NULL DEFAULT '0',
+  `usage_timestamp` varchar(40) NOT NULL DEFAULT '0',
+  `expiry_timestamp` varchar(40) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `products`
+--
+
+CREATE TABLE `products` (
+  `product_id` int(4) NOT NULL,
+  `name` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `products`
+--
+
+INSERT INTO `products` (`product_id`, `name`) VALUES
+(1, 'Coming Soon!'),
+(2, 'Coming Soon!'),
+(3, 'Coming Soon!');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `settings`
+--
+
+CREATE TABLE `settings` (
+  `name` varchar(40) NOT NULL,
+  `value` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `settings`
+--
+
+INSERT INTO `settings` (`name`, `value`) VALUES
+('defaultPWPlain', 'HaveFun23'),
+('default_pw', '$2a$11$ruvJfSwEQOVKBc1G/6Z9nOFIqYHz7y7sqZyME3EhididyXaYziPAu'),
+('help_link', 'http://google.com/'),
+('version', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `userdata`
+--
+
+CREATE TABLE `userdata` (
+  `username` varchar(40) NOT NULL,
+  `password` varchar(100) NOT NULL DEFAULT '$2a$11$ruvJfSwEQOVKBc1G/6Z9nOFIqYHz7y7sqZyME3EhididyXaYziPAu',
+  `sysid` varchar(40) DEFAULT 'notset',
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
+  `product_1` varchar(40) DEFAULT '0',
+  `product_2` varchar(40) DEFAULT '0',
+  `product_3` varchar(40) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `licensekeys`
+--
+ALTER TABLE `licensekeys`
+  ADD PRIMARY KEY (`licensekey`);
+
+--
+-- Indizes für die Tabelle `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indizes für die Tabelle `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indizes für die Tabelle `userdata`
+--
+ALTER TABLE `userdata`
+  ADD PRIMARY KEY (`username`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
