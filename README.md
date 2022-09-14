@@ -12,3 +12,5 @@
 ## Usage
 
 Just build the code and delete all files in the release folder except the .exe! All other files are not needed!
+
+Please use the MySQL.txt file to import all needed mysql database tables;
